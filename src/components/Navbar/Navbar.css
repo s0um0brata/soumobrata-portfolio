@@ -1,0 +1,240 @@
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border-color);
+  transition: background var(--transition);
+}
+
+.navbar-container {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+/* LOGO */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: var(--font-heading);
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.logo-bracket {
+  color: var(--accent);
+}
+
+/* DESKTOP NAVIGATION */
+
+.desktop-navigation {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+}
+
+.nav-link {
+  position: relative;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 5px;
+  background: var(--accent);
+  transition: width var(--transition);
+}
+
+.nav-link:hover {
+  color: var(--accent);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ACTIONS */
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--bg-card);
+  color: var(--text-primary);
+
+  cursor: pointer;
+  overflow: hidden;
+  line-height: 0;
+
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+.theme-toggle > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+}
+
+.theme-toggle svg {
+  display: block;
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  stroke-width: 2;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.hire-button {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 11px 17px;
+  border-radius: 7px;
+  background: var(--accent);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.hire-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* MOBILE MENU BUTTON */
+
+.mobile-menu-button {
+  display: none;
+  width: 39px;
+  height: 39px;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+}
+
+/* MOBILE NAVIGATION */
+
+.mobile-navigation {
+  display: none;
+}
+
+/* TABLET */
+
+@media (max-width: 1050px) {
+  .desktop-navigation {
+    gap: 14px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+  }
+
+  .navbar-container {
+    gap: 15px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 850px) {
+  .navbar-container {
+    height: 70px;
+  }
+
+  .desktop-navigation {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: flex;
+  }
+
+  .mobile-navigation {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 24px 20px;
+    overflow: hidden;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-primary);
+  }
+
+  .mobile-nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 4px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-color);
+    transition: color var(--transition);
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--accent);
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo {
+    font-size: 24px;
+  }
+
+  .navbar-actions {
+    gap: 8px;
+  }
+
+  .hire-button {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}

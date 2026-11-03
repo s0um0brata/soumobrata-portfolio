@@ -1,0 +1,332 @@
+
+/* =========================================
+   EDUCATION SECTION
+========================================= */
+
+.education-section {
+  position: relative;
+  padding: 100px 24px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.education-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.education-heading {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.education-eyebrow {
+  display: inline-block;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  margin-bottom: 15px;
+}
+
+.education-heading h2 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: clamp(34px, 5vw, 50px);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.education-heading h2 span {
+  color: var(--accent);
+}
+
+.education-heading > p {
+  max-width: 550px;
+  margin: 15px auto 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   EDUCATION TIMELINE
+========================================= */
+
+.education-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding-left: 35px;
+  margin-left: 20px;
+  border-left: 2px solid var(--border-color);
+}
+
+/* =========================================
+   EDUCATION CARD
+========================================= */
+
+.education-card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 25px;
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  background: var(--bg-card);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+/* =========================================
+   EDUCATION ICON
+========================================= */
+
+.education-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--accent);
+  font-size: 23px;
+}
+
+.education-card::before {
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: -44px;
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--bg-primary);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+/* =========================================
+   EDUCATION CONTENT
+========================================= */
+
+.education-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.education-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.education-level {
+  padding: 7px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background: var(--bg-primary);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.education-year {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.education-year svg {
+  color: var(--accent);
+}
+
+.education-content h3 {
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 21px;
+  font-weight: 800;
+  margin-bottom: 7px;
+}
+
+.education-content h4 {
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 17px;
+}
+
+/* =========================================
+   INSTITUTION
+========================================= */
+
+.education-institution {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.education-institution svg {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+/* =========================================
+   ACADEMIC SCORE
+========================================= */
+
+.education-score {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  background: var(--bg-primary);
+  color: var(--accent);
+}
+
+.education-score > svg {
+  font-size: 19px;
+}
+
+.education-score div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.education-score strong {
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.education-score span {
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 750px) {
+  .education-timeline {
+    padding-left: 28px;
+    margin-left: 15px;
+  }
+
+  .education-card {
+    padding: 25px;
+    gap: 18px;
+  }
+
+  .education-card::before {
+    left: -37px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .education-section {
+    padding: 75px 20px;
+  }
+
+  .education-heading {
+    margin-bottom: 45px;
+  }
+
+  .education-timeline {
+    padding-left: 20px;
+    margin-left: 8px;
+    gap: 20px;
+  }
+
+  .education-card {
+    padding: 22px;
+    gap: 15px;
+  }
+
+  .education-card::before {
+    left: -29px;
+    top: 32px;
+    width: 12px;
+    height: 12px;
+    border-width: 3px;
+  }
+
+  .education-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 19px;
+  }
+
+  .education-content h3 {
+    font-size: 18px;
+  }
+
+  .education-content h4 {
+    font-size: 12px;
+  }
+
+  .education-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+  .education-section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .education-card {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .education-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .education-content {
+    width: 100%;
+  }
+}

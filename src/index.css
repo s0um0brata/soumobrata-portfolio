@@ -1,0 +1,115 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --accent: #4f8cff;
+  --accent-hover: #3475ed;
+  --accent-soft: rgba(79, 140, 255, 0.12);
+
+  --font-heading: 'Outfit', sans-serif;
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* DARK THEME */
+
+.theme-dark {
+  --bg-primary: #0b1120;
+  --bg-secondary: #111b2e;
+  --bg-card: #142036;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border-color: rgba(148, 163, 184, 0.14);
+  --navbar-bg: rgba(11, 17, 32, 0.85);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* LIGHT THEME */
+
+.theme-light {
+  --bg-primary: #f7f9fc;
+  --bg-secondary: #eef2f7;
+  --bg-card: #ffffff;
+  --text-primary: #172033;
+  --text-secondary: #64748b;
+  --border-color: rgba(15, 23, 42, 0.10);
+  --navbar-bg: rgba(247, 249, 252, 0.88);
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* GLOBAL APPLICATION */
+
+.app {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background var(--transition), color var(--transition);
+}
+
+.container {
+  width: min(1200px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 90px;
+}
