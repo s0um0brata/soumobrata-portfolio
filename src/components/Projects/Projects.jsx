@@ -52,7 +52,7 @@ const projects = [
       "REST APIs",
       "Blockchain RPC",
       "CSS",
-      "WebSocket"
+      "WebSocket",
     ],
     liveUrl: "https://www.kaanchscan.com",
     githubUrl: "",
@@ -77,6 +77,34 @@ const projects = [
     liveUrl: "https://app.kaanch.com",
     githubUrl: "",
     type: "Professional Project",
+  },
+
+  {
+    id: 5,
+    title: "GamersHub – PC Game Store",
+    category: "Full Stack Application",
+    description:
+      "A full-stack PC game store featuring game listings, detailed game information, user authentication, profile management and cloud-based image uploads. Built with secure JWT access and refresh token authentication, MongoDB integration and Cloudinary.",
+    images: ["/images/projects/gamershub.png"],
+    technologies: [
+      "React.js",
+      "Vite",
+      "Redux Toolkit",
+      "JavaScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "Mongoose",
+      "REST APIs",
+      "Axios",
+      "Cloudinary",
+      "JWT",
+      "ChatGPT",
+      "Google Gemini",
+    ],
+    liveUrl: "https://gamershub-frontend-sandy.vercel.app",
+    githubUrl: "",
+    type: "Personal Project",
   },
 ];
 
