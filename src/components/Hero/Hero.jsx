@@ -153,7 +153,7 @@ const Hero = () => {
 
             <div className="hero-image-frame">
               <img
-                src="/images/profile.jpeg"
+                src="/images/profile.png"
                 alt="Soumobrata Chanda"
                 className="hero-profile-image"
               />
