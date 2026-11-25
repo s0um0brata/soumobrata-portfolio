@@ -1,15 +1,8 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../features/theme/themeSlice";
 
-import {
-  Sun,
-  Moon,
-  Menu,
-  X,
-  ArrowUpRight,
-} from "lucide-react";
+import { Sun, Moon, Menu, X, ArrowUpRight } from "lucide-react";
 
 import { motion, AnimatePresence } from "motion/react";
 
@@ -71,17 +64,42 @@ function Navbar() {
     setMenuOpen(false);
   };
 
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: "-20% 0px -65% 0px",
+        threshold: 0,
+      },
+    );
+
+    navLinks.forEach((link) => {
+      const section = document.querySelector(link.href);
+
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header className="navbar">
       <div className="container navbar-container">
-
         {/* LOGO */}
 
-        <a
-          href="#home"
-          className="navbar-logo"
-          onClick={closeMenu}
-        >
+        <a href="#home" className="navbar-logo" onClick={closeMenu}>
           <span className="logo-bracket">&lt;</span>
           <span>SC</span>
           <span className="logo-bracket">/&gt;</span>
@@ -94,7 +112,14 @@ function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="nav-link"
+              className={`nav-link ${
+                activeSection === link.href.substring(1) ? "active" : ""
+              }`}
+              aria-current={
+                activeSection === link.href.substring(1)
+                  ? "location"
+                  : undefined
+              }
             >
               {link.name}
             </a>
@@ -104,19 +129,14 @@ function Navbar() {
         {/* NAVBAR ACTIONS */}
 
         <div className="navbar-actions">
-
           {/* THEME TOGGLE */}
 
           <motion.button
             className="theme-toggle"
             onClick={handleThemeToggle}
             whileTap={{ scale: 0.85 }}
-            aria-label={`Switch to ${
-              theme === "dark" ? "light" : "dark"
-            } mode`}
-            title={`Switch to ${
-              theme === "dark" ? "light" : "dark"
-            } mode`}
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -126,11 +146,7 @@ function Navbar() {
                 exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
                 transition={{ duration: 0.2 }}
               >
-                {theme === "dark" ? (
-                  <Sun size={19} />
-                ) : (
-                  <Moon size={19} />
-                )}
+                {theme === "dark" ? <Sun size={19} /> : <Moon size={19} />}
               </motion.span>
             </AnimatePresence>
           </motion.button>
@@ -152,7 +168,6 @@ function Navbar() {
           >
             {menuOpen ? <X size={23} /> : <Menu size={23} />}
           </button>
-
         </div>
       </div>
 
@@ -171,13 +186,13 @@ function Navbar() {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="mobile-nav-link"
+                className={`mobile-nav-link ${
+                  activeSection === link.href.substring(1) ? "active" : ""
+                }`}
                 initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.04 }}
-                onClick={(e) =>
-                  handleMobileNavigation(e, link.href)
-                }
+                onClick={(e) => handleMobileNavigation(e, link.href)}
               >
                 {link.name}
                 <ArrowUpRight size={15} />
@@ -186,7 +201,6 @@ function Navbar() {
           </motion.nav>
         )}
       </AnimatePresence>
-
     </header>
   );
 }

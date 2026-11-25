@@ -1,4 +1,3 @@
-
 .navbar {
   position: sticky;
   top: 0;
@@ -139,7 +138,9 @@
   color: white;
   font-size: 13px;
   font-weight: 700;
-  transition: background var(--transition), transform var(--transition);
+  transition:
+    background var(--transition),
+    transform var(--transition);
 }
 
 .hire-button:hover {
@@ -237,4 +238,21 @@
     padding: 10px 12px;
     font-size: 12px;
   }
+}
+
+/* ACTIVE NAVIGATION LINK */
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* MOBILE ACTIVE LINK */
+
+.mobile-nav-link.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
