@@ -71,7 +71,7 @@ const Hero = () => {
           </h1>
 
           <h2 className="hero-subtitle">
-            Software Engineer & Frontend Developer
+            Software Engineer & Website Developer
           </h2>
 
           <p className="hero-description">
