@@ -21,7 +21,7 @@ const projects = [
     images: ["/images/projects/rudd-website.png"],
     technologies: ["Next.js", "JavaScript", "Motion", "Syncfusion", "CSS"],
     liveUrl: "https://rudd-website.netlify.app",
-    githubUrl: "",
+    githubUrl: "https://github.com/s0um0brata/rudd-website",
     type: "Personal Project",
   },
   {
@@ -35,8 +35,8 @@ const projects = [
       "/images/projects/interview-generator-2.png",
     ],
     technologies: ["React.js", "Node.js", "Google Gemini", "Zod", "Puppeteer"],
-    liveUrl: "",
-    githubUrl: "",
+    liveUrl: "https://interview-generator-frontend-smoky.vercel.app/",
+    githubUrl: "https://github.com/s0um0brata/Interview-generator-Frontend",
     type: "Personal Project",
   },
   {
@@ -103,7 +103,7 @@ const projects = [
       "Google Gemini",
     ],
     liveUrl: "https://gamershub-frontend-sandy.vercel.app",
-    githubUrl: "",
+    githubUrl: "https://github.com/s0um0brata/gamershub-frontend",
     type: "Personal Project",
   },
 ];
