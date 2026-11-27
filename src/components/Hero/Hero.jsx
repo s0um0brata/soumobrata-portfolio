@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useSelector } from "react-redux";
 
 import {
   FaGithub,
@@ -131,6 +132,7 @@ const technologyGroups = [
 ];
 
 const Hero = () => {
+  const theme = useSelector((state) => state.theme.mode);
   return (
     <section className="hero" id="home">
       <div className="hero-container">
@@ -232,7 +234,11 @@ const Hero = () => {
 
             <div className="hero-image-frame">
               <img
-                src="/images/profile.png"
+                src={
+                  theme === "dark"
+                    ? "/images/profile-dark.png"
+                    : "/images/profile-light.png"
+                }
                 alt="Soumobrata Chanda"
                 className="hero-profile-image"
               />
