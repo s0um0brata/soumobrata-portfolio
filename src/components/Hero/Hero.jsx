@@ -1,4 +1,3 @@
-
 import { motion } from "motion/react";
 
 import {
@@ -11,6 +10,9 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaNodeJs,
+  FaBootstrap,
+  FaSass,
+  FaGitAlt,
 } from "react-icons/fa";
 
 import {
@@ -19,6 +21,20 @@ import {
   FaLaptopCode,
 } from "react-icons/fa6";
 
+import {
+  SiNextdotjs,
+  SiExpress,
+  SiMongodb,
+  SiRedux,
+  SiTailwindcss,
+  SiMui,
+  SiWalletconnect,
+  SiPostman,
+  SiVite,
+  SiGooglegemini,
+} from "react-icons/si";
+
+import { VscVscode } from "react-icons/vsc";
 import { IoSparkles } from "react-icons/io5";
 
 import "./Hero.css";
@@ -41,19 +57,83 @@ const socialLinks = [
   },
 ];
 
-const technologies = [
-  { name: "React", icon: <FaReact /> },
-  { name: "JavaScript", icon: <FaJs /> },
-  { name: "HTML5", icon: <FaHtml5 /> },
-  { name: "CSS3", icon: <FaCss3Alt /> },
-  { name: "Node.js", icon: <FaNodeJs /> },
+const technologyGroups = [
+  {
+    title: "Frontend Development",
+    items: [
+      { name: "React.js", icon: <FaReact /> },
+      { name: "Next.js", icon: <SiNextdotjs /> },
+      { name: "JavaScript", icon: <FaJs /> },
+      { name: "HTML5", icon: <FaHtml5 /> },
+      { name: "CSS3", icon: <FaCss3Alt /> },
+    ],
+  },
+  {
+    title: "Backend Development",
+    items: [
+      { name: "Node.js", icon: <FaNodeJs /> },
+      { name: "Express.js", icon: <SiExpress /> },
+      { name: "MongoDB", icon: <SiMongodb /> },
+      { name: "REST APIs", icon: <FaCode /> },
+      { name: "Axios", icon: <FaCode /> },
+      { name: "Fetch API", icon: <FaCode /> },
+    ],
+  },
+  {
+    title: "State Management",
+    items: [
+      { name: "Redux", icon: <SiRedux /> },
+      { name: "Redux Toolkit", icon: <SiRedux /> },
+      { name: "Context API", icon: <FaReact /> },
+    ],
+  },
+  {
+    title: "UI & Styling",
+    items: [
+      { name: "Tailwind CSS", icon: <SiTailwindcss /> },
+      { name: "Bootstrap", icon: <FaBootstrap /> },
+      { name: "Material UI", icon: <SiMui /> },
+      { name: "SCSS", icon: <FaSass /> },
+      { name: "Syncfusion", icon: <FaCode /> },
+    ],
+  },
+  {
+    title: "Blockchain & Web3",
+    items: [
+      { name: "Web3.js", icon: <FaCode /> },
+      { name: "Ethers.js", icon: <FaCode /> },
+      { name: "MetaMask", icon: <FaCode /> },
+      { name: "WalletConnect", icon: <SiWalletconnect /> },
+      { name: "Blockchain RPC", icon: <FaCode /> },
+    ],
+  },
+  {
+    title: "Development Tools",
+    items: [
+      { name: "Git", icon: <FaGitAlt /> },
+      { name: "GitHub", icon: <FaGithub /> },
+      { name: "Postman", icon: <SiPostman /> },
+      { name: "Vite", icon: <SiVite /> },
+      { name: "VS Code", icon: <VscVscode /> },
+      { name: "React Router", icon: <FaReact /> },
+      { name: "Motion", icon: <FaCode /> },
+      { name: "EmailJS", icon: <FaCode /> },
+    ],
+  },
+  {
+    title: "AI & Generative AI",
+    items: [
+      { name: "ChatGPT", icon: <FaCode /> },
+      { name: "Google Gemini", icon: <SiGooglegemini /> },
+      { name: "Gemini API", icon: <SiGooglegemini /> },
+    ],
+  },
 ];
 
 const Hero = () => {
   return (
     <section className="hero" id="home">
       <div className="hero-container">
-
         {/* LEFT CONTENT */}
         <motion.div
           className="hero-content"
@@ -75,11 +155,12 @@ const Hero = () => {
           </h2>
 
           <p className="hero-description">
-            I build modern, responsive, and user-friendly web applications
-            with a passion for clean design and meaningful digital
-            experiences. I have 3+ years of experience working with
-            React.js, Next.js, blockchain technologies, and AI-powered
-            applications.
+            I build modern, responsive, and user-friendly web applications with
+            a passion for clean design and meaningful digital experiences. I
+            have 3+ years of experience working with React.js, Next.js,
+            blockchain technologies, backend development and AI-powered
+            applications using Google Gemini API and AI-assisted development
+            tools like ChatGPT.
           </p>
 
           {/* ACTION BUTTONS */}
@@ -109,9 +190,7 @@ const Hero = () => {
                 href={social.url}
                 target={social.name === "Email" ? undefined : "_blank"}
                 rel={
-                  social.name === "Email"
-                    ? undefined
-                    : "noopener noreferrer"
+                  social.name === "Email" ? undefined : "noopener noreferrer"
                 }
                 aria-label={social.name}
                 className="hero-social-link"
@@ -172,6 +251,7 @@ const Hero = () => {
               <div className="floating-card-icon">
                 <FaCode />
               </div>
+
               <div>
                 <strong>Developer</strong>
                 <span>Building the Web</span>
@@ -189,6 +269,7 @@ const Hero = () => {
               }}
             >
               <IoSparkles />
+
               <div>
                 <strong>Creative Mind</strong>
                 <span>Problem Solver</span>
@@ -197,24 +278,46 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* TECHNOLOGY STRIP */}
+      {/* TECHNOLOGY STACK */}
       <motion.div
         className="hero-tech-strip"
         initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
       >
-        <span className="hero-tech-label">
-          TECHNOLOGIES I WORK WITH
-        </span>
+        <div className="hero-tech-heading">
+          <span className="hero-tech-label">MY TECHNICAL EXPERTISE</span>
+          <h2>
+            Technologies <span>& Tools</span>
+          </h2>
+          <p>
+            Technologies, frameworks and AI tools I use to build modern digital
+            experiences.
+          </p>
+        </div>
 
-        <div className="hero-tech-list">
-          {technologies.map((tech) => (
-            <div className="hero-tech-item" key={tech.name}>
-              {tech.icon}
-              <span>{tech.name}</span>
-            </div>
+        <div className="hero-tech-groups">
+          {technologyGroups.map((group, index) => (
+            <motion.div
+              className="hero-tech-group"
+              key={group.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+            >
+              <h3>{group.title}</h3>
+
+              <div className="hero-tech-list">
+                {group.items.map((tech) => (
+                  <div className="hero-tech-item" key={tech.name}>
+                    {tech.icon}
+                    <span>{tech.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </motion.div>
