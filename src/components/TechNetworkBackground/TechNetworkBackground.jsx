@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 // Background height compared with the screen. 1.8 = 180% of the screen.
 const LAYER_SCALE = 1.8;
@@ -66,6 +66,40 @@ const networkConnections = [
   ["motion", "api"],
   ["node", "api"],
 ];
+
+// Space between the node centre and the label: 12px max glow + 3px gap
+const LABEL_GAP = 15;
+// Space between the word and the border, on each side
+const LABEL_PADDING = 6;
+
+function NodeLabel({ node, screenWidth }) {
+  const textRef = useRef(null);
+  const [textWidth, setTextWidth] = useState(0);
+
+  // Measure the real width of the word (font size differs on mobile)
+  useLayoutEffect(() => {
+    setTextWidth(textRef.current.getComputedTextLength());
+  }, [node.name, screenWidth]);
+
+  const labelWidth = textWidth + LABEL_PADDING * 2;
+  // Put the label on the left if it would go off screen
+  const flip = node.px + LABEL_GAP + labelWidth > screenWidth - 8;
+  const labelX = flip ? node.px - LABEL_GAP - labelWidth : node.px + LABEL_GAP;
+
+  return (
+    <g className="network-label">
+      <rect x={labelX} y={node.py - 11} width={labelWidth} height="22" rx="6" />
+      <text
+        ref={textRef}
+        x={labelX + LABEL_PADDING}
+        y={node.py}
+        dominantBaseline="central"
+      >
+        {node.name}
+      </text>
+    </g>
+  );
+}
 
 function TechNetworkBackground() {
   const containerRef = useRef(null);
@@ -184,48 +218,27 @@ function TechNetworkBackground() {
           </g>
 
           <g className="network-nodes">
-            {positionedNodes.map((node, index) => {
-              const labelWidth = node.name.length * 7 + 16;
-              // Put the label on the left if it would go off screen
-              const flip = node.px + 12 + labelWidth > width - 8;
-              const labelX = flip
-                ? node.px - 12 - labelWidth
-                : node.px + 12;
-
-              return (
-                <g
-                  key={node.id}
-                  className="network-node"
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                >
-                  <circle
-                    cx={node.px}
-                    cy={node.py}
-                    r="3"
-                    className="network-node-dot"
-                  />
-                  <circle
-                    cx={node.px}
-                    cy={node.py}
-                    r="10"
-                    className="network-node-halo"
-                  />
-
-                  <g className="network-label">
-                    <rect
-                      x={labelX}
-                      y={node.py - 13}
-                      width={labelWidth}
-                      height="26"
-                      rx="6"
-                    />
-                    <text x={labelX + 8} y={node.py + 4}>
-                      {node.name}
-                    </text>
-                  </g>
-                </g>
-              );
-            })}
+            {positionedNodes.map((node, index) => (
+              <g
+                key={node.id}
+                className="network-node"
+                style={{ animationDelay: `${index * 0.15}s` }}
+              >
+                <circle
+                  cx={node.px}
+                  cy={node.py}
+                  r="3"
+                  className="network-node-dot"
+                />
+                <circle
+                  cx={node.px}
+                  cy={node.py}
+                  r="10"
+                  className="network-node-halo"
+                />
+                <NodeLabel node={node} screenWidth={width} />
+              </g>
+            ))}
           </g>
 
           <g className="network-particles">
