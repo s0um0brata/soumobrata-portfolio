@@ -173,12 +173,20 @@ const Hero = () => {
             </a>
 
             <a
-              href="/files/Soumobrata_Chanda_CV.pdf"
+              href="/files/soumobrata_updatedCV.pdf"
               download
               className="hero-btn hero-btn-secondary"
             >
               <FaDownload />
               Download CV
+            </a>
+            <a
+              href="/files/Soumobrata_Chanda_Cover_Letter.pdf"
+              download
+              className="hero-btn hero-btn-secondary"
+            >
+              <FaDownload />
+              Download Cover Letter
             </a>
           </div>
 
